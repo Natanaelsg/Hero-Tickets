@@ -3,6 +3,8 @@ import express, {Application } from 'express';
 
 
 import { connect } from './infra/database'
+import { errorMiddleware } from './infra/middlewares/middlewares';
+
 
 
 class App {
@@ -20,7 +22,7 @@ class App {
         //this.app.use()
     }
     IntecerptionError(){
-        //this.app.use((err: Error, req: R, res: any, next: any) => {
+        this.app.use(errorMiddleware);
     }
 middlewaresInitialize(){
     this.app.use(express.json())
